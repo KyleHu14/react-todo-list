@@ -1,0 +1,13 @@
+.title {
+    color: white;
+    text-align: center;
+    font-weight: 500;
+    font-size: 80px;
+    font-family: 'Roboto', sans-serif;
+}
+
+@media (max-width: 350px) {
+    .title{
+        font-size: 45px;
+    }
+}
