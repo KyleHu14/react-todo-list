@@ -1,0 +1,51 @@
+.form-style{
+    margin:0 ;
+}
+
+.form-elements{
+    /* Spacing */
+    margin-left: 500px;
+    margin-right: 500px;
+    margin-top: 35px;
+
+    /* FlexBox */
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.input-style{
+    /* Coloring */
+    background-color: #121212;
+    color:#CBCBCB;
+
+    /* Border */
+    border-width: 1px;
+    border-style: solid;
+    border-color: #323232;
+
+    /* Sizing */
+    font-size: 25px;
+    flex: 1;
+    width: 0;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.input-style:focus{
+    outline: none !important;
+    border:1px solid #1178ff;
+}
+
+.submit-btn{
+    /* Coloring */
+    background-color: #323232;
+    color: white;
+
+    /* Border */
+    border: 1px;
+
+    /* Sizing */
+    width: 100px;
+}
