@@ -1,13 +1,13 @@
 .form-style{
-    margin:0 ;
+    /* Spacing */
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 35px;
+    margin-bottom: 50px;
 }
 
 .form-elements{
-    /* Spacing */
-    margin-left: 500px;
-    margin-right: 500px;
-    margin-top: 35px;
-
     /* FlexBox */
     flex: 1;
     display: flex;
