@@ -12,7 +12,7 @@ const App = () => {
 		<div>
 			<Title />
 			<Input tasks={taskList} setTasks={setTaskList} />
-			<DisplayTasks tasks={taskList} />
+			<DisplayTasks tasks={taskList} setTasks={setTaskList} />
 		</div>
 	);
 };

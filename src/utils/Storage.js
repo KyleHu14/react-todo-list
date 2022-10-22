@@ -22,15 +22,21 @@ const addValue = (newValue) => {
 
 // returns an array of values in local storage
 const getValues = () => {
-	// Initialize the array of values
-	let valueArray = [];
-	// get nextId to see how many values we loop through
-	const nextId = Number(localStorage.getItem("nextId"));
-	for (var i = 0; i < nextId; i++) {
-		valueArray[i] = localStorage.getItem(JSON.stringify(i));
+	// Initialize an object of values
+	var archive = {};
+
+	var keys = Object.keys(localStorage);
+	var index = keys.length;
+
+	while (index--) {
+		archive[keys[index]] = localStorage.getItem(keys[index]);
 	}
 
-	return valueArray;
+	return archive;
 };
 
-export { addValue, getValues };
+const delItem = (id) => {
+	localStorage.removeItem(id);
+};
+
+export { addValue, getValues, delItem };
