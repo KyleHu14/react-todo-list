@@ -29,7 +29,9 @@ const getValues = () => {
 	var index = keys.length;
 
 	while (index--) {
-		archive[keys[index]] = localStorage.getItem(keys[index]);
+		if (keys[index] !== "nextId") {
+			archive[keys[index]] = localStorage.getItem(keys[index]);
+		}
 	}
 
 	return archive;

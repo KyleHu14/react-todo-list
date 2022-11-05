@@ -3,6 +3,8 @@ import React from "react";
 import { delItem, getValues } from "../utils/Storage";
 
 const TaskList = (props) => {
+	// Given an index, deletes the targeted index in local storage
+	// Updates tasks use state as well
 	const delTask = (index) => {
 		delItem(index);
 		props.setTasks(getValues());
@@ -17,8 +19,8 @@ const TaskList = (props) => {
 	} else {
 		return (
 			<div className="task-list-container">
-				{Object.entries(props.tasks).map((key, val) => (
-					<div key={key} className="task-container">
+				{Object.keys(props.tasks).map((key, i) => (
+					<div key={i} className="task-container">
 						<button
 							className="done-btn"
 							onClick={() => {
@@ -26,7 +28,7 @@ const TaskList = (props) => {
 							}}>
 							Done
 						</button>
-						<div className="task-name">{val}</div>
+						<div className="task-name">{props.tasks[key]}</div>
 					</div>
 				))}
 			</div>

@@ -13,6 +13,7 @@ const Input = (props) => {
 		// Add the new task into local storage
 		addValue(newTask);
 		props.setTasks(getValues());
+		setTask("");
 	};
 
 	return (
