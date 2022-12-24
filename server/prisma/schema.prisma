@@ -1,0 +1,34 @@
+// **************************************************************
+// [PRISMA SCHEMA WORKFLOW]
+// 1. Make changes to the schema
+// 2. Migrate changes via (npx prisma migrate dev --name init)
+// 3. Invoke prisma generate (npx prisma generate) in order to update changes to prisma client
+// **************************************************************
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Task {
+  // **************************************************************
+  // [NOTES]
+  // Scalar Field Format : 
+  //  (Field Name) (Filed Type) (Type Modifier) (Attribute)
+  //  Type Modifier -> Making a field optional
+  //  Attribute -> Specifying if a field is an ID / Autoincrement
+  // **************************************************************
+
+  // Each model can only have one id
+  id       Int     @id @default(autoincrement())
+  // "Title" of a task which should be unique
+  taskName String  @unique
+  // Description of a task is optional
+  taskDesc String?
+  // Is the task finished / not finished
+  isDone   Boolean @default(false)
+}
