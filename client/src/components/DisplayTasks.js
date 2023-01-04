@@ -1,39 +1,42 @@
-import React from "react";
+import { useEffect, useState } from "react";
 
-import { delItem, getValues } from "../utils/Storage";
+const DisplayTasks = (props) => {
+	const [tasks, setTasks] = useState([]);
 
-const TaskList = (props) => {
-	// Given an index, deletes the targeted index in local storage
-	// Updates tasks use state as well
-	const delTask = (index) => {
-		delItem(index);
-		props.setTasks(getValues());
+	const getTasks = async () => {
+		try {
+			// Request Options
+			const options = { method: "GET" };
+			// Response of the GET request
+			const resp = await fetch("http://localhost:5000/task", options);
+			// Convert response into a json
+			const taskList = await resp.json();
+
+			setTasks(taskList);
+		} catch (error) {
+			console.log(error);
+		}
 	};
 
-	if (props.tasks === []) {
-		return (
-			<div className="task-list-container">
-				<div className="task-container">No Tasks</div>
-			</div>
-		);
-	} else {
-		return (
-			<div className="task-list-container">
-				{Object.keys(props.tasks).map((key, i) => (
-					<div key={i} className="task-container">
-						<button
-							className="done-btn"
-							onClick={() => {
-								delTask(key);
-							}}>
-							Done
-						</button>
-						<div className="task-name">{props.tasks[key]}</div>
-					</div>
-				))}
-			</div>
-		);
-	}
+	/**
+	 * UseEffect : Check if there are new tasks
+	 */
+	useEffect(() => {
+		getTasks();
+	}, [props.updateVal]);
+
+	return (
+		<div className="task-list-container">
+			{tasks.map((task) => (
+				<div key={task.id} className="task-container">
+					<div className="task-name">{task.taskName}</div>
+					<button className="done-btn" onClick={() => {}}>
+						Done
+					</button>
+				</div>
+			))}
+		</div>
+	);
 };
 
-export default TaskList;
+export default DisplayTasks;
