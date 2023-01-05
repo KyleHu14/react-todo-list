@@ -40,6 +40,18 @@ app.post("/task", async (req, res) => {
 	res.json(result);
 });
 
+// Delete Requests
+app.delete("/task/:id", async (req, res) => {
+	const taskId = parseInt(req.params.id);
+	const delTask = await prisma.task.delete({
+		where: {
+			id: taskId,
+		},
+	});
+
+	res.json(delTask);
+});
+
 // Starting the Server on port 3000
 const server = app.listen(5000, () =>
 	console.log(`🚀 Server ready at: http://localhost:5000`)

@@ -18,6 +18,20 @@ const DisplayTasks = (props) => {
 		}
 	};
 
+	const delTask = async (id) => {
+		console.log("hello");
+		try {
+			const options = { method: "DELETE" };
+			const resp = await fetch(
+				`http://localhost:5000/task/${id}`,
+				options
+			);
+			props.forceUpdate();
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
 	/**
 	 * UseEffect : Check if there are new tasks
 	 */
@@ -30,7 +44,9 @@ const DisplayTasks = (props) => {
 			{tasks.map((task) => (
 				<div key={task.id} className="task-container">
 					<div className="task-name">{task.taskName}</div>
-					<button className="done-btn" onClick={() => {}}>
+					<button
+						className="done-btn"
+						onClick={() => delTask(task.id)}>
 						Done
 					</button>
 				</div>

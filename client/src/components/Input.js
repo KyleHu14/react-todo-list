@@ -4,6 +4,9 @@ import { useState } from "react";
 const Input = (props) => {
 	const [newTaskTitle, setTaskTitle] = useState("");
 
+	/**
+	 * Creates a new task in the database, also forces DisplayTasks to rerender
+	 */
 	const createTask = async (event) => {
 		// Prevent Default means prevent default action of refreshing page
 		event.preventDefault();
@@ -19,7 +22,9 @@ const Input = (props) => {
 		};
 		// 3. Response of post request
 		const resp = await fetch("http://localhost:5000/task", options);
+		// 4. Upon adding a task, call force update to rerender the DisplayTasks component
 		props.forceUpdate();
+		// 5. Reset the "title" of the task since its been created
 		setTaskTitle("");
 	};
 
