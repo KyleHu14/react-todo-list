@@ -1,0 +1,100 @@
+.modal-btn{
+    /* Coloring */
+    color:#CBCBCB;
+    background-color: #202020;
+
+    /* Padding */
+    padding: 5px;
+
+    /* Border Styles */
+    border : none;
+    border-radius: 3px;
+
+    /* Fonts */
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+}
+
+.overlay{
+    background-color: rgba(255, 255, 255, 0.1);
+    position: fixed;
+    width : 100%;
+    height : 100%;
+    left:0;
+    top:0;
+    padding-top: 100px;
+}
+
+.cancel-btn{
+    /* Coloring */
+    color:#ffffff;
+    background-color: #505050;
+
+    /* Margin */
+    margin-right: 15px;
+
+    /* Padding */
+    padding: 5px;
+
+    /* Border Styles */
+    border : none;
+    border-radius: 3px;
+
+    /* Fonts */
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+}
+
+.update-btn {
+    /* Coloring */
+    color:#ffffff;
+    background-color: #57a3bf;
+
+    /* Padding */
+    padding: 5px;
+
+    /* Border Styles */
+    border : none;
+    border-radius: 3px;
+
+    /* Fonts */
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+}
+
+.modal-content{
+    display: flex;
+    flex-direction: column;
+    background-color: #222222;
+    width: 500px;
+    height : 18%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20vh;
+    padding : 15px;
+}
+
+.modal-title{
+    /* Fonts */
+    font-family: 'Roboto', sans-serif;
+    font-size: 23px;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.modal-subtitle{
+    /* Fonts */
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    color: white;
+}
+
+.input-task-title{
+    margin-top: 15px;
+}
+
+.modal-btns{
+    margin-top: 15px;
+    display: flex;
+    justify-content: right;
+}

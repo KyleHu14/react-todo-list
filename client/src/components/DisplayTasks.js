@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
+import EditModal from "./EditModal";
 
-const DisplayTasks = (props) => {
+const DisplayTasks = ({ forceUpdate, updateVal }) => {
+	const [curTitle, setCurTitle] = useState("");
+	const [curTaskId, setCurTaskId] = useState("");
+	const [openModal, setOpenModal] = useState(false);
 	const [tasks, setTasks] = useState([]);
 
 	const getTasks = async () => {
@@ -19,14 +23,13 @@ const DisplayTasks = (props) => {
 	};
 
 	const delTask = async (id) => {
-		console.log("hello");
 		try {
 			const options = { method: "DELETE" };
 			const resp = await fetch(
 				`http://localhost:5000/task/${id}`,
 				options
 			);
-			props.forceUpdate();
+			forceUpdate();
 		} catch (error) {
 			console.log(error);
 		}
@@ -37,7 +40,7 @@ const DisplayTasks = (props) => {
 	 */
 	useEffect(() => {
 		getTasks();
-	}, [props.updateVal]);
+	}, [updateVal]);
 
 	return (
 		<div className="task-list-container">
@@ -49,8 +52,25 @@ const DisplayTasks = (props) => {
 						onClick={() => delTask(task.id)}>
 						Done
 					</button>
+					<button
+						className="modal-btn"
+						onClick={() => {
+							setOpenModal(true);
+							setCurTitle(task.taskName);
+							setCurTaskId(task.id);
+						}}>
+						Edit
+					</button>
 				</div>
 			))}
+			<EditModal
+				curTitle={curTitle}
+				setCurTitle={setCurTitle}
+				curTaskId={curTaskId}
+				open={openModal}
+				onClose={() => setOpenModal(false)}
+				forceUpdate={forceUpdate}
+			/>
 		</div>
 	);
 };

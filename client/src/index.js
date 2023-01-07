@@ -9,6 +9,7 @@ import "./styles/title.css";
 import "./styles/general.css";
 import "./styles/input.css";
 import "./styles/displayTask.css";
+import "./styles/editModal.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

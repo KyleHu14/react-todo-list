@@ -39,6 +39,9 @@
     /* Border */
     border-bottom: 1px solid;
     border-color: rgb(90, 90, 90);
+
+    /* Margins */
+    margin-right: 15px;
 }
 
 .done-btn{
